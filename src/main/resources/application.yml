@@ -1,4 +1,4 @@
-
+# Основная конфигурация
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/cloudstorage
@@ -8,4 +8,25 @@ spring:
   jpa:
     properties:
       hibernate:
+        ddl-auto: create-drop
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  # Дополнительные настройки, если есть
+
+# Конфигурация для тестов
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create-drop
+        dialect: org.hibernate.dialect.H2Dialect
+  file:
+    upload-dir: /tmp/test-uploads

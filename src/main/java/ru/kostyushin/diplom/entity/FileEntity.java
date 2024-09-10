@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class File {
+public class FileEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,5 @@ public class File {
     private String filename;
     private String filePath;
     private String owner;
-
 }
 
